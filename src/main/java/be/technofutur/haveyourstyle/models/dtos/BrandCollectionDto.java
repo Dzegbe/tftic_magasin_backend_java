@@ -12,4 +12,5 @@ public class BrandCollectionDto {
     private String label;
     private List<ArticleDto> articles;
     private String logo;
+    
 }

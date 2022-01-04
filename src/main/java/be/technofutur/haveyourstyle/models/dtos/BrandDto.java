@@ -14,4 +14,5 @@ public class BrandDto {
     private String logo;
     private Long IdSeller;
     private List<CommentDto> comments;
+    private List<BrandCollectionDto> brandCollections;
 }

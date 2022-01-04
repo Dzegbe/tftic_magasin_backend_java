@@ -43,5 +43,7 @@ public class Seller extends User {
     private String surname;
     //if he is individual seller or professionnal seller
     private String functionSeller;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CategoryStyle> style;
     
 }

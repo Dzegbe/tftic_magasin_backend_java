@@ -3,6 +3,6 @@ package be.technofutur.haveyourstyle.models.forms;
 import lombok.Data;
 
 @Data
-public class CategoryForm {
+public class CategoryStyleForm {
     private String label;
 }

@@ -15,6 +15,6 @@ public class ProSellerRegisterForm {
     private String password;
     private int TvaNumber;
     private int companyNumber;
-    private int companyName;
+    private String companyName;
     private String fax;
 }

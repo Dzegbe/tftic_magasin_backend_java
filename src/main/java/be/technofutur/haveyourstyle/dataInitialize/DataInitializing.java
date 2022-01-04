@@ -8,9 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import be.technofutur.haveyourstyle.models.entities.Adress;
-import be.technofutur.haveyourstyle.models.entities.Category;
 import be.technofutur.haveyourstyle.models.entities.Customer;
-import be.technofutur.haveyourstyle.repositories.CategoryRepository;
 import be.technofutur.haveyourstyle.repositories.CustomerRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,12 +18,10 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class DataInitializing implements InitializingBean {
     private final CustomerRepository customerRepository;
-    private final CategoryRepository categoryRepository;
 
 
-    public DataInitializing(CustomerRepository customerRepository, CategoryRepository categoryRepository) {
+    public DataInitializing(CustomerRepository customerRepository ) {
         this.customerRepository = customerRepository;
-        this.categoryRepository = categoryRepository;
     }
 
 
@@ -61,9 +57,7 @@ public class DataInitializing implements InitializingBean {
                     .build();
         
         customerRepository.save(customer);
-         Category cat = new Category();
-         cat.setLabel("label");      
-        this.categoryRepository.save(cat);
+         
     }
 
     

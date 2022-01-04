@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Category {
+public class CategoryStyle {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
     @Column(nullable = false,unique = true)

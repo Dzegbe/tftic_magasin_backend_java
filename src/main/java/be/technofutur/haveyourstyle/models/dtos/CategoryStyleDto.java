@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CategoryDto {
+public class CategoryStyleDto {
     private Long categoriId;
     private String label;
 }
