@@ -3,8 +3,10 @@ package be.technofutur.haveyourstyle.models.dtos;
 import java.util.List;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 @Data
+@SuperBuilder
 public abstract class UserDto {
     private Long userId;
     private String username;
