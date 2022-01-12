@@ -1,7 +1,11 @@
 package be.technofutur.haveyourstyle.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CustomerMeasurementRepository extends JpaRepository<CustomerMeasurementRepository,Long>{
+import be.technofutur.haveyourstyle.models.entities.CustomerMeasurements;
+
+@Repository
+public interface CustomerMeasurementRepository extends JpaRepository<CustomerMeasurements,Long>{
     
 }

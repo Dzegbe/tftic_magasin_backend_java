@@ -1,10 +1,13 @@
 package be.technofutur.haveyourstyle.mappers.mapperImpl;
 
-import be.technofutur.haveyourstyle.mappers.BaseMapper;
+import org.springframework.stereotype.Service;
+
+import be.technofutur.haveyourstyle.mappers.baseMapper.BaseMapper;
 import be.technofutur.haveyourstyle.models.dtos.CustomerMeasurementsDto;
 import be.technofutur.haveyourstyle.models.entities.CustomerMeasurements;
 import be.technofutur.haveyourstyle.models.forms.CustomerMeasurementsForm;
 
+@Service
 public class CustomerMeasurementsMapperImpl implements BaseMapper<CustomerMeasurementsDto,CustomerMeasurementsForm,CustomerMeasurements>{
 
     @Override

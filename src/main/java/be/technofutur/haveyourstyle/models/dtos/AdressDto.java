@@ -11,9 +11,9 @@ public class AdressDto {
     private Long adressId;
     private String country;
     private String city;
-    private int zipCode;
+    private String zipCode;
     private String street;
-    private int houseNumber;
+    private String houseNumber;
     private List<String> function;
     
 }

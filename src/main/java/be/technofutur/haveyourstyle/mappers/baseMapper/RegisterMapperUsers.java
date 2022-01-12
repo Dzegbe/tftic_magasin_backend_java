@@ -1,14 +1,14 @@
-package be.technofutur.haveyourstyle.mappers;
+package be.technofutur.haveyourstyle.mappers.baseMapper;
 
-import be.technofutur.haveyourstyle.models.dtos.IndividualSellerDto;
-import be.technofutur.haveyourstyle.models.dtos.ProfessionalSellerDto;
+import be.technofutur.haveyourstyle.models.entities.Customer;
 import be.technofutur.haveyourstyle.models.entities.Seller;
+import be.technofutur.haveyourstyle.models.forms.userforms.CustomerRegisterForm;
 import be.technofutur.haveyourstyle.models.forms.userforms.IndividualSellerRegisterForm;
 import be.technofutur.haveyourstyle.models.forms.userforms.ProSellerRegisterForm;
 
-public interface BaseSellerMapper {
-    public IndividualSellerDto entityToDtoIndividual(Seller seller);
-    public ProfessionalSellerDto entityToDtoProfessional(Seller seller);
+public interface RegisterMapperUsers {
     public Seller formToEntityIndividual(IndividualSellerRegisterForm formIndividual);
     public Seller formToEntityPrfessional(ProSellerRegisterForm formProfessional);
+    public Customer register(CustomerRegisterForm formRegister);
+
 }

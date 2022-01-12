@@ -2,7 +2,9 @@ package be.technofutur.haveyourstyle.mappers.userMapperImpl;
 
 import java.util.stream.Collectors;
 
-import be.technofutur.haveyourstyle.mappers.BaseCustomerMapper;
+import org.springframework.stereotype.Service;
+
+import be.technofutur.haveyourstyle.mappers.baseMapper.BaseCustomerMapper;
 import be.technofutur.haveyourstyle.mappers.mapperImpl.AdressMapperImpl;
 import be.technofutur.haveyourstyle.mappers.mapperImpl.ArticleMapperImpl;
 import be.technofutur.haveyourstyle.mappers.mapperImpl.CustomerMeasurementsMapperImpl;
@@ -11,6 +13,7 @@ import be.technofutur.haveyourstyle.models.entities.Customer;
 import be.technofutur.haveyourstyle.models.forms.userforms.CustomerRegisterForm;
 import be.technofutur.haveyourstyle.models.forms.userforms.UserFormLogin;
 
+@Service
 public class CustomerMapperImpl implements BaseCustomerMapper<CustomerDto,CustomerRegisterForm,UserFormLogin,Customer> {
 
     private final CustomerMeasurementsMapperImpl cmMapper;
@@ -51,24 +54,6 @@ public class CustomerMapperImpl implements BaseCustomerMapper<CustomerDto,Custom
         return null;
     }
 
-
-    @Override
-    public Customer register(CustomerRegisterForm formRegister) {
-        if(formRegister != null){
-            Customer customer = new Customer();
-            customer.setEmail(formRegister.getEmail());
-            customer.setGsmNumber(formRegister.getGsmNumber());
-            customer.setTelNumber(formRegister.getTelNumber());
-            customer.setAdress(formRegister.getAdress().stream().map(adressMapper::formToEntity).collect(Collectors.toList()));
-            customer.setName((formRegister.getName()));
-            customer.setSurname(formRegister.getSurname());
-            customer.setUsername(formRegister.getUsername());
-            customer.setPassword(formRegister.getPassword());
-            return customer;
-
-        }
-        return null;
-    }
 
     @Override
     public Customer dtoToEntity(CustomerDto dto) {

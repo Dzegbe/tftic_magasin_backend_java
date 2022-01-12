@@ -1,7 +1,5 @@
 package be.technofutur.haveyourstyle.dataInitialize;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.InitializingBean;
@@ -33,9 +31,9 @@ public class DataInitializing implements InitializingBean {
        Adress adress =  Adress.builder()
                                 .city("city")
                                 .country("country")
-                                .houseNumber(3)
+                                .houseNumber("3b")
                                 .street("street")
-                                .zipCode(6000)
+                                .zipCode("6000")
                                 .function(List.of("LIVRAISON"))
                                 .build();
         
@@ -47,7 +45,7 @@ public class DataInitializing implements InitializingBean {
                     .name("bruce")
                     .password("jojo")
                     .surname("brodouile")
-                    .roles(List.of("User"))
+                    .roles(List.of("SELLER"))
                     .telNumber(null)
                     .username("costume")
                     .accountNonExpired(true)

@@ -1,4 +1,4 @@
-package be.technofutur.haveyourstyle.mappers;
+package be.technofutur.haveyourstyle.mappers.baseMapper;
 
 public interface BaseMapper<TDTO,TFORM,TENTITY> {
     public TDTO entityToDto(TENTITY entity);

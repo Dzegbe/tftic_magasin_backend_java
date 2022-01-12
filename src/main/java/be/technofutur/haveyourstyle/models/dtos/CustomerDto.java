@@ -2,12 +2,12 @@ package be.technofutur.haveyourstyle.models.dtos;
 
 import java.util.List;
 
-import be.technofutur.haveyourstyle.models.forms.CustomerMeasurementsForm;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
 
-@Setter @Getter
+@EqualsAndHashCode(callSuper = true)
+@Data
 @SuperBuilder
 public class CustomerDto extends UserDto{
     private String name;

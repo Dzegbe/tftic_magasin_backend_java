@@ -1,11 +1,13 @@
 package be.technofutur.haveyourstyle.mappers.mapperImpl;
 
-import be.technofutur.haveyourstyle.mappers.BaseMapper;
+import org.springframework.stereotype.Service;
+
+import be.technofutur.haveyourstyle.mappers.baseMapper.BaseMapper;
 import be.technofutur.haveyourstyle.models.dtos.ArticleDto;
 import be.technofutur.haveyourstyle.models.entities.Article;
 import be.technofutur.haveyourstyle.models.forms.ArticleForm;
 import be.technofutur.haveyourstyle.repositories.BrandRepository;
-
+@Service
 public class ArticleMapperImpl implements BaseMapper<ArticleDto,ArticleForm,Article> {
 
     private final BrandRepository bRepository;

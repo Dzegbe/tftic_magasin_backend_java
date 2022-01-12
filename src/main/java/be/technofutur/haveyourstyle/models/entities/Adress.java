@@ -30,11 +30,11 @@ public class Adress {
     @Column(nullable = false)
     private String city;
     @Column(nullable = false)
-    private int zipCode;
+    private String zipCode;
     @Column(nullable = false)
     private String street;
     @Column(nullable = false)
-    private int houseNumber;
+    private String houseNumber;
     //function , is how the adress be going use, like delevery.
     @ElementCollection(targetClass = String.class,fetch = FetchType.EAGER)
     private List<String> function;

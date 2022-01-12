@@ -2,12 +2,15 @@ package be.technofutur.haveyourstyle.mappers.mapperImpl;
 
 
 
-import be.technofutur.haveyourstyle.mappers.BaseMapper;
+import org.springframework.stereotype.Service;
+
+import be.technofutur.haveyourstyle.mappers.baseMapper.BaseMapper;
 import be.technofutur.haveyourstyle.models.dtos.CommentDto;
 import be.technofutur.haveyourstyle.models.entities.Comment;
 import be.technofutur.haveyourstyle.models.forms.CommentForm;
 import be.technofutur.haveyourstyle.repositories.CustomerRepository;
 
+@Service
 public class CommentMapperImpl implements BaseMapper<CommentDto,CommentForm,Comment> {
     private final CustomerRepository customerRepository;
 

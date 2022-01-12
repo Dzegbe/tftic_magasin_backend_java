@@ -35,6 +35,6 @@ public class Brand {
     @ManyToOne
     @JoinColumn(name = "userId")
     private Seller seller;
-    @ManyToOne
+    @OneToMany
     private List<Comment> comments; 
 }

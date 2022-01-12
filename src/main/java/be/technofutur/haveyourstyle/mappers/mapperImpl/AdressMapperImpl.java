@@ -1,10 +1,12 @@
 package be.technofutur.haveyourstyle.mappers.mapperImpl;
 
-import be.technofutur.haveyourstyle.mappers.BaseMapper;
+import org.springframework.stereotype.Service;
+
+import be.technofutur.haveyourstyle.mappers.baseMapper.BaseMapper;
 import be.technofutur.haveyourstyle.models.dtos.AdressDto;
 import be.technofutur.haveyourstyle.models.entities.Adress;
 import be.technofutur.haveyourstyle.models.forms.AdressForm;
-
+@Service
 public class AdressMapperImpl implements BaseMapper<AdressDto,AdressForm,Adress> {
 
     @Override
@@ -27,10 +29,10 @@ public class AdressMapperImpl implements BaseMapper<AdressDto,AdressForm,Adress>
     public Adress formToEntity(AdressForm form) {
         if(form != null){
             Adress a  = new Adress();
-            a.setCity(form.getCity());
-            a.setCountry(form.getCountry());
+            a.setCity(form.getCity().toLowerCase());
+            a.setCountry(form.getCountry().toLowerCase());
             a.setHouseNumber(form.getHouseNumber());
-            a.setStreet(form.getStreet());
+            a.setStreet(form.getStreet().toLowerCase());
             a.setZipCode(form.getZipCode());
             return a;
         }
