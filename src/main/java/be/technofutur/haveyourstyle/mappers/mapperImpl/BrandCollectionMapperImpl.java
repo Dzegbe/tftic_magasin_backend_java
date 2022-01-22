@@ -35,10 +35,8 @@ public class BrandCollectionMapperImpl implements BaseMapper<BrandCollectionDto,
     }
 
     @Override
-    public BrandCollection formToEntity(BrandCollectionForm form) {
+    public BrandCollection formToEntity(BrandCollectionForm form, BrandCollection bd) {
         if(form != null){
-            BrandCollection bd = new BrandCollection();
-            bd.setArticles(form.getArticles().stream().map(articleRepository::getById).collect(Collectors.toList()));
             bd.setLabel(form.getLabel());
             bd.setLogo(form.getLogo());
             return bd;

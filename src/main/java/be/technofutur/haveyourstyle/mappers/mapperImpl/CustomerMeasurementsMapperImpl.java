@@ -26,9 +26,8 @@ public class CustomerMeasurementsMapperImpl implements BaseMapper<CustomerMeasur
     }
 
     @Override
-    public CustomerMeasurements formToEntity(CustomerMeasurementsForm form) {
+    public CustomerMeasurements formToEntity(CustomerMeasurementsForm form,CustomerMeasurements cm) {
         if(form != null){
-            CustomerMeasurements cm = new CustomerMeasurements();
             cm.setHauteurBas(form.getHauteurBas());
             cm.setHauteurHaut(form.getHauteurHaut());
             cm.setTourBassin(form.getTourBassin());

@@ -21,14 +21,8 @@ import lombok.experimental.SuperBuilder;
 @Getter @Setter
 @SuperBuilder
 public class Seller extends User {
-    @OneToMany(cascade = CascadeType.ALL,
-                mappedBy = "seller",
-                orphanRemoval = true)
-    private List<Brand> brands;
     @Column(nullable = false,unique = true)
     private String email;
-    @OneToMany
-    private List<Article> articles;
     @Column(unique = true)
     private String TvaNumber;
     @Column(unique = true)

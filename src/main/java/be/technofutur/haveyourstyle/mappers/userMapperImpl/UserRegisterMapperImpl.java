@@ -1,7 +1,6 @@
 package be.technofutur.haveyourstyle.mappers.userMapperImpl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -27,13 +26,13 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
     }
 
     @Override
-    public Customer register(CustomerRegisterForm formRegister) {
+    public Customer register(CustomerRegisterForm formRegister, Customer customer) {
         if(formRegister != null){
-            Customer customer = new Customer();
             customer.setEmail(formRegister.getEmail());
             customer.setGsmNumber(formRegister.getGsmNumber());
             customer.setTelNumber(formRegister.getTelNumber());
-            Adress a = adressMapper.formToEntity(formRegister.getAdress());
+            Adress a = new Adress();
+            a = adressMapper.formToEntity(formRegister.getAdress(),a);
             a.setFunction(List.of("DOMICIL"));
             customer.getAdress().add(a);
             customer.setName((formRegister.getName()).toLowerCase());
@@ -46,11 +45,11 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
     }
 
     @Override
-    public Seller formToEntityIndividual(IndividualSellerRegisterForm formIndividual) {
+    public Seller formToEntityIndividual(IndividualSellerRegisterForm formIndividual,Seller seller) {
        if(formIndividual != null){
            log.info("!!!!! je passe");
-           Seller seller = new Seller();
-           Adress a = adressMapper.formToEntity(formIndividual.getAdress());
+           Adress a = new Adress();
+           a = adressMapper.formToEntity(formIndividual.getAdress(),a);
            a.setFunction(List.of("DOMICIL"));
            seller.setAdress(List.of(a));
            seller.setGsmNumber(formIndividual.getGsmNumber());
@@ -69,10 +68,10 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
     }
 
     @Override
-    public Seller formToEntityPrfessional(ProSellerRegisterForm formProfessional) {
+    public Seller formToEntityPrfessional(ProSellerRegisterForm formProfessional, Seller seller) {
         if(formProfessional != null){
-            Seller seller = new Seller();
-            Adress a = adressMapper.formToEntity(formProfessional.getAdress());
+          Adress a = new Adress();
+            a = adressMapper.formToEntity(formProfessional.getAdress(),a);
             a.setFunction(List.of("DOMICIL"));
             seller.getAdress().add(a);
             seller.setGsmNumber(formProfessional.getGsmNumber());

@@ -1,6 +1,5 @@
 package be.technofutur.haveyourstyle.mappers.mapperImpl;
 
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -9,21 +8,14 @@ import be.technofutur.haveyourstyle.models.dtos.BrandDto;
 import be.technofutur.haveyourstyle.models.entities.Brand;
 import be.technofutur.haveyourstyle.models.forms.BrandForm;
 import be.technofutur.haveyourstyle.repositories.SellerRepository;
-
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service
 public class BrandMapperImpl implements BaseMapper<BrandDto,BrandForm,Brand> {
-    private final BrandCollectionMapperImpl brandCollectionMapper;
     private final SellerRepository sellerRepository;
-    private final CommentMapperImpl commentMapper;
 
-
-
-
-    public BrandMapperImpl(BrandCollectionMapperImpl brandCollectionMapper, SellerRepository sellerRepository,
-            CommentMapperImpl commentMapper) {
-        this.brandCollectionMapper = brandCollectionMapper;
+    public BrandMapperImpl(SellerRepository sellerRepository) {
         this.sellerRepository = sellerRepository;
-        this.commentMapper = commentMapper;
     }
 
     @Override
@@ -31,29 +23,24 @@ public class BrandMapperImpl implements BaseMapper<BrandDto,BrandForm,Brand> {
         if(entity != null){
             return BrandDto.builder()
                            .IdSeller(entity.getSeller().getUserId())
-                           .brandId(entity.getBrandId())
+                           .id(entity.getBrandId())
                            .label(entity.getLabel())
-                           .logo(entity.getLogo())
-                           .comments(entity.getComments().stream().map(commentMapper::entityToDto).collect(Collectors.toList()))
-                           .brandCollections(entity.getBrandCollections()
-                                                   .stream()
-                                                   .map(brandCollectionMapper::entityToDto)
-                                                   .collect(Collectors.toList()))
+                        //    .comments(entity.getComments().stream().map(commentMapper::entityToDto).collect(Collectors.toList()))
                            .build();
+            // if(entity.getBrandCollections() != null){
+            //     dto.setBrandCollections(entity.getBrandCollections().stream().map(brandCollectionMapper :: entityToDto)
+            //                     .collect(Collectors.toList()));
+            // }
         }
         return null;
     }
 
     @Override
-    public Brand formToEntity(BrandForm form) {
-        if(form != null){
-            Brand b = new Brand();
-            b.setBrandCollections(form.getBranCollections().stream()
-                                      .map(brandCollectionMapper::formToEntity)
-                                      .collect(Collectors.toList()));
+    public Brand formToEntity(BrandForm form, Brand b) {
+        if(form != null){   
             b.setLabel(form.getLabel());
-            b.setLogo(form.getLogo());
             b.setSeller(sellerRepository.getById(form.getIdSeller()));
+            return b;
         }
         return null;
     }

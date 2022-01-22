@@ -13,12 +13,8 @@ public class ProfessionalSellerDto extends UserDto {
 
     private List<BrandDto> brands;
     private String email;
-    private List<ArticleDto> articles;
     private String TvaNumber;
     private String companyNumber;
     private String companyName;
-    private String fax;
-
-   
-    
+    private String fax;  
 }

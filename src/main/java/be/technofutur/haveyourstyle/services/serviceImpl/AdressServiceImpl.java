@@ -46,7 +46,7 @@ public class AdressServiceImpl implements AdressService {
     @Override
     public AdressDto update(Long id, AdressForm form) {
         Adress a = adressRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("this Adress doesn't exist"));
-        a = adressMapper.formToEntity(form);
+        a = adressMapper.formToEntity(form,a);
        return adressMapper.entityToDto(adressRepository.save(a));
     }
 
@@ -63,7 +63,8 @@ public class AdressServiceImpl implements AdressService {
     }
     
     public AdressDto insert(AdressForm form){
-        Adress a = adressMapper.formToEntity(form);
+        Adress a = new Adress();
+        a = adressMapper.formToEntity(form,a);
         return adressMapper.entityToDto(adressRepository.save(a));
     }
 }

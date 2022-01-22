@@ -4,24 +4,25 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
+import be.technofutur.haveyourstyle.validators.validatorString.StringConstaint;
 import lombok.Data;
 
 @Data
 public class AdressForm {
 
     @Length(min = 3,max = 30)
-    @Pattern(regexp = "[A-Za-z]*[a-z]+")
+    @StringConstaint
     private String country;
     @Length(min = 3,max = 30)
-    @Pattern(regexp = "[A-Za-z]*[a-z]+")
+    @StringConstaint
     private String city;
-    @Length(min = 4)
+    @Length(min = 4, max = 5)
     @Pattern(regexp = "[0-9]+")
     private String zipCode;
     @Length(min = 3,max = 30)
-    @Pattern(regexp = "[a-zA-Z]*[a-z ]+")
+    @StringConstaint
     private String street;
     @Length(min = 1)
-    @Pattern(regexp = "([0-9]{1,3})+([abcdefABCDEF]{0,1})")
+    @Pattern(regexp = "^[0-9]{1,3}[a-fA-F]{0,1}$")
     private String houseNumber;
 }

@@ -1,5 +1,7 @@
 package be.technofutur.haveyourstyle.mappers.mapperImpl;
 
+
+
 import org.springframework.stereotype.Service;
 
 import be.technofutur.haveyourstyle.mappers.baseMapper.BaseMapper;
@@ -11,40 +13,46 @@ import be.technofutur.haveyourstyle.repositories.BrandRepository;
 public class ArticleMapperImpl implements BaseMapper<ArticleDto,ArticleForm,Article> {
 
     private final BrandRepository bRepository;
+    private final BrandMapperImpl mapper;
 
     
 
-    public ArticleMapperImpl(BrandRepository bRepository) {
+    public ArticleMapperImpl(BrandRepository bRepository, BrandMapperImpl mapper) {
         this.bRepository = bRepository;
+        this.mapper = mapper;
     }
 
     @Override
     public ArticleDto entityToDto(Article entity) {
         if(entity != null){
-            return ArticleDto.builder()
-                             .articleId(entity.getArticleId())
-                             .brand(entity.getBrand())
-                             .info(entity.getInfo())
+            ArticleDto dto = ArticleDto.builder()
+                             .id(entity.getArticleId())
+                             .brand(mapper.entityToDto(entity.getBrand()))
+                            //  .info(entity.getInfo())
                              .label(entity.getLabel())
                              //conversion a faire
-                             .pictures(entity.getPictures())
                              .price(entity.getPrice())
                              .build();
+            if(entity.getPictures() != null){
+                dto.setPictures(entity.getPictures());
+            }
+            return dto;
         }
         return null;
     }
 
     @Override
-    public Article formToEntity(ArticleForm form) {
-        if(form != null && bRepository.existsById(form.getIdBrand())){
-            Article a = new Article();
-            a.setBrand(bRepository.getById(form.getIdBrand()));
+    public Article formToEntity(ArticleForm form, Article  a) {
+        if(form != null ){
             //a.getInfo besoin du mapper de info
-            a.setCanModifie(form.isCanModifie());
+            //a.setCanModifie(form.isCanModifie());
             a.setLabel(form.getLabel());
-            a.setMaxQuantity(form.getMaxQuantity());
-            // pas encore la reponse a.setPictures(form.get);
+            //a.setMaxQuantity(form.getMaxQuantity());
+            a.setPictures(form.getPictures());
             a.setPrice(form.getPrice());
+            if(bRepository.existsById(form.getIdBrand())){
+                a.setBrand(bRepository.getById(form.getIdBrand()));
+            }
             return a;
         }
         return null;

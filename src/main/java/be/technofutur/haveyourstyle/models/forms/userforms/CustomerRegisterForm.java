@@ -1,17 +1,16 @@
 package be.technofutur.haveyourstyle.models.forms.userforms;
 
-import java.util.List;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
 import be.technofutur.haveyourstyle.models.forms.AdressForm;
 import be.technofutur.haveyourstyle.models.forms.CustomerMeasurementsForm;
+import be.technofutur.haveyourstyle.validators.validatorNumeroTel.PhoneNumberConstraint;
+import be.technofutur.haveyourstyle.validators.validatorString.StringConstaint;
 import lombok.Data;
 
 @Data
@@ -20,17 +19,17 @@ public class CustomerRegisterForm {
 
     private String password;
     private AdressForm adress;
-    @Max(14) @Pattern(regexp = "[0-9]+")
+    @PhoneNumberConstraint
     private String gsmNumber;
-    @Pattern(regexp = "([0-9]?)+")
+    @PhoneNumberConstraint
     private String telNumber;
     @NotBlank
     @Length(min = 3,max = 30)
-    @Pattern(regexp = "[A-Za-z]*[a-z]+")
+    @StringConstaint
     private String name;
     @NotBlank
     @Length(min = 3,max = 30)
-    @Pattern(regexp = "[A-Za-z]*[a-z]+")
+    @StringConstaint
     private String surname;
     @NotBlank
     @Email

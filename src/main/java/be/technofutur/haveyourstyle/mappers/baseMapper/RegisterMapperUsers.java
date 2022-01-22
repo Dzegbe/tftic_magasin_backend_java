@@ -7,8 +7,8 @@ import be.technofutur.haveyourstyle.models.forms.userforms.IndividualSellerRegis
 import be.technofutur.haveyourstyle.models.forms.userforms.ProSellerRegisterForm;
 
 public interface RegisterMapperUsers {
-    public Seller formToEntityIndividual(IndividualSellerRegisterForm formIndividual);
-    public Seller formToEntityPrfessional(ProSellerRegisterForm formProfessional);
-    public Customer register(CustomerRegisterForm formRegister);
+    public Seller formToEntityIndividual(IndividualSellerRegisterForm formIndividual,Seller seller);
+    public Seller formToEntityPrfessional(ProSellerRegisterForm formProfessional, Seller seller);
+    public Customer register(CustomerRegisterForm formRegister, Customer customer );
 
 }

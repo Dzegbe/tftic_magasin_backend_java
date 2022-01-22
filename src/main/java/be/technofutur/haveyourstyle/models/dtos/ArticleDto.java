@@ -1,6 +1,7 @@
 package be.technofutur.haveyourstyle.models.dtos;
 
-import be.technofutur.haveyourstyle.models.entities.Brand;
+import java.util.List;
+
 import be.technofutur.haveyourstyle.models.entities.Info;
 import lombok.Builder;
 import lombok.Data;
@@ -8,11 +9,11 @@ import lombok.Data;
 @Data
 @Builder
 public class ArticleDto {
-    private Long articleId;
+    private Long id;
     private String label;
     private float price;
-    private Byte[] pictures;
-    private Brand brand;
+    private List<String> pictures;
+    private BrandDto brand;
     private Info info;
     private boolean canModifie;
 }

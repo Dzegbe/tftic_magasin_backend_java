@@ -13,7 +13,7 @@ public class AdressMapperImpl implements BaseMapper<AdressDto,AdressForm,Adress>
     public AdressDto entityToDto(Adress entity) {
         if(entity != null){
             return AdressDto.builder()
-                            .adressId(entity.getAdressId())
+                            .id(entity.getAdressId())
                             .city(entity.getCity())
                             .country(entity.getCountry())
                             .houseNumber(entity.getHouseNumber())
@@ -26,9 +26,8 @@ public class AdressMapperImpl implements BaseMapper<AdressDto,AdressForm,Adress>
     }
 
     @Override
-    public Adress formToEntity(AdressForm form) {
+    public Adress formToEntity(AdressForm form, Adress a) {
         if(form != null){
-            Adress a  = new Adress();
             a.setCity(form.getCity().toLowerCase());
             a.setCountry(form.getCountry().toLowerCase());
             a.setHouseNumber(form.getHouseNumber());

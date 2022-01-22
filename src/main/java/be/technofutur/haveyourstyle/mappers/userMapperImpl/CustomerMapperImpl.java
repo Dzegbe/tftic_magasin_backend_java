@@ -34,7 +34,7 @@ public class CustomerMapperImpl implements BaseCustomerMapper<CustomerDto,Custom
     public CustomerDto entityToDto(Customer entity) {
         if(entity != null){
             return CustomerDto.builder()
-                              .userId(entity.getUserId())
+                              .id(entity.getUserId())
                               .email(entity.getEmail())
                               .gsmNumber(entity.getGsmNumber())
                               .measurements(cmMapper.entityToDto(entity.getMeasurement()))

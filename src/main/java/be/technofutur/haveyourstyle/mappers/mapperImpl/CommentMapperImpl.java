@@ -36,7 +36,7 @@ public class CommentMapperImpl implements BaseMapper<CommentDto,CommentForm,Comm
     }
 
     @Override
-    public Comment formToEntity(CommentForm form) {
+    public Comment formToEntity(CommentForm form,Comment entity) {
         // TODO Auto-generated method stub
         return null;
     }

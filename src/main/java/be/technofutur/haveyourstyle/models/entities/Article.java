@@ -2,8 +2,11 @@ package be.technofutur.haveyourstyle.models.entities;
 
 
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,12 +34,13 @@ public class Article {
     private String label;
     @Column(nullable = false)
     private float price;
-    @Lob @Column(nullable = false)
-    private Byte[] pictures;
-    @ManyToOne
+    @Lob
+    @ElementCollection(targetClass = String.class)
+    private List<String> pictures;
+    @ManyToOne(cascade = CascadeType.ALL)
     private Brand brand;
     @OneToOne(cascade = CascadeType.ALL)
     private Info info;
-    private boolean canModifie;
-    private int maxQuantity;  
+    // private boolean canModifie;
+    // private int maxQuantity; 
 }

@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 public abstract class UserDto {
-    private Long userId;
+    private Long id;
     private String username;
     private List<AdressDto> adress;
     private String gsmNumber;

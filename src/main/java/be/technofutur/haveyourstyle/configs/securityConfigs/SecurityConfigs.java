@@ -2,6 +2,7 @@ package be.technofutur.haveyourstyle.configs.securityConfigs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -46,6 +47,13 @@ public class SecurityConfigs extends WebSecurityConfigurerAdapter {
 
         //donner les autorisations
         http.authorizeRequests()
+        // .antMatchers("/h2-console/**").permitAll()
+        // .antMatchers(HttpMethod.POST,"/login").permitAll()
+        // .antMatchers(HttpMethod.POST,"/register","/registerCustomer","/registerSellerInd",
+        //         "/registerSellerPro").permitAll()
+        // .antMatchers(HttpMethod.POST,"/brand/**","/article/**").hasAnyAuthority("SELLER")
+        // .antMatchers(HttpMethod.PUT,"/brand/**","/article/**").hasAnyAuthority("SELLER")
+        // .antMatchers(HttpMethod.DELETE,"/brand/**","/article/**").hasAnyAuthority("SELLER")
         .anyRequest().permitAll()
         .and().httpBasic();
 
@@ -69,7 +77,6 @@ public class SecurityConfigs extends WebSecurityConfigurerAdapter {
         corsConfiguration.addExposedHeader("Authorization");
         corsConfiguration.setAllowCredentials(true);
 
-        // LAMBDA Expressions
         return request -> corsConfiguration;
     }
 

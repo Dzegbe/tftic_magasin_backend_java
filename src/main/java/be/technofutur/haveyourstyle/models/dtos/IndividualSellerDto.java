@@ -12,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 public class IndividualSellerDto extends UserDto{
     private List<BrandDto> brands;
     private String email;
-    private List<ArticleDto> articles;
     private String name;
     private String surname;
 }

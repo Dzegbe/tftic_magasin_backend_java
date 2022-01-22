@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,12 +29,11 @@ public class Brand {
     private Long brandId;
     @Column(nullable = false,unique = true)
     private String label;
-    private String logo;
     @OneToMany(cascade = CascadeType.ALL)
     private List<BrandCollection> brandCollections;
     @ManyToOne
-    @JoinColumn(name = "userId")
     private Seller seller;
     @OneToMany
-    private List<Comment> comments; 
+    private List<Comment> comments;
+    
 }

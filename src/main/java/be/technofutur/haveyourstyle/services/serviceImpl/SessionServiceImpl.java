@@ -73,7 +73,8 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public IndividualSellerDto registerSellerind(IndividualSellerRegisterForm formRegisterInd) {
-        Seller s = mRegisterMapper.formToEntityIndividual(formRegisterInd);
+        Seller s = new Seller();
+         s = mRegisterMapper.formToEntityIndividual(formRegisterInd,s);
         if(s != null){
             s.setAccountNonExpired(true);
             s.setAccountNonLocked(true);
@@ -95,7 +96,8 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public ProfessionalSellerDto registerSellerPro(ProSellerRegisterForm formRegisterPro) {
-        Seller s = mRegisterMapper.formToEntityPrfessional(formRegisterPro);
+        Seller s = new Seller();
+        s = mRegisterMapper.formToEntityPrfessional(formRegisterPro,s);
         if(s != null){
             s.setAccountNonExpired(true);
             s.setAccountNonLocked(true);
@@ -116,7 +118,8 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public CustomerDto registerCustomer(CustomerRegisterForm formRegisterCustomer) {
-        Customer c = mRegisterMapper.register(formRegisterCustomer);
+        Customer c = new Customer();
+        c = mRegisterMapper.register(formRegisterCustomer,c);
         if(c != null){
             c.setAccountNonExpired(true);
             c.setAccountNonLocked(true);

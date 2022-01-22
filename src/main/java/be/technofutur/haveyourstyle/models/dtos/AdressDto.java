@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 public class AdressDto {
-    private Long adressId;
+    private Long id;
     private String country;
     private String city;
     private String zipCode;
