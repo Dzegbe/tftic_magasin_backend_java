@@ -1,6 +1,8 @@
 package be.technofutur.haveyourstyle.models.forms.userforms;
 
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
@@ -30,4 +32,5 @@ public class ProSellerRegisterForm {
     private String companyName;
     @PhoneNumberConstraint
     private String fax;
+    private List<String> socialNetwork;
 }

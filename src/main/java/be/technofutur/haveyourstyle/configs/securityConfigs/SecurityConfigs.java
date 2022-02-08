@@ -47,15 +47,16 @@ public class SecurityConfigs extends WebSecurityConfigurerAdapter {
 
         //donner les autorisations
         http.authorizeRequests()
-        // .antMatchers("/h2-console/**").permitAll()
-        // .antMatchers(HttpMethod.POST,"/login").permitAll()
-        // .antMatchers(HttpMethod.POST,"/register","/registerCustomer","/registerSellerInd",
-        //         "/registerSellerPro").permitAll()
-        // .antMatchers(HttpMethod.POST,"/brand/**","/article/**").hasAnyAuthority("SELLER")
-        // .antMatchers(HttpMethod.PUT,"/brand/**","/article/**").hasAnyAuthority("SELLER")
-        // .antMatchers(HttpMethod.DELETE,"/brand/**","/article/**").hasAnyAuthority("SELLER")
-        .anyRequest().permitAll()
-        .and().httpBasic();
+        .antMatchers("/h2-console/**").permitAll()
+        .antMatchers(HttpMethod.POST,"/login").permitAll()
+        .antMatchers(HttpMethod.POST,"/register","/registerCustomer","/registerSellerInd",
+                "/registerSellerPro").permitAll()
+        .antMatchers(HttpMethod.GET,"/verifyCustomer").permitAll()
+        .antMatchers(HttpMethod.POST,"/brand/**","/article/**").hasAnyAuthority("SELLER")
+        .antMatchers(HttpMethod.PUT,"/brand/**","/article/**").hasAnyAuthority("SELLER")
+        .antMatchers(HttpMethod.DELETE,"/brand/**","/article/**").hasAnyAuthority("SELLER")
+        .anyRequest().authenticated();
+
 
         //ajouter le tokenFilter
         http.addFilterBefore(

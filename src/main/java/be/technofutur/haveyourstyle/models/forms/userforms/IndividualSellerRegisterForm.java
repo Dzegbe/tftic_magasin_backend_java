@@ -1,6 +1,8 @@
 package be.technofutur.haveyourstyle.models.forms.userforms;
 
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -31,4 +33,5 @@ public class IndividualSellerRegisterForm {
     @Length(min = 3,max = 30)
     @StringConstaint
     private String surname;
+    private List<String> socialNetwork;
 }

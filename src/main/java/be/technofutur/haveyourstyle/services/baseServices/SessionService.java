@@ -1,5 +1,9 @@
 package be.technofutur.haveyourstyle.services.baseServices;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.MessagingException;
+
 import be.technofutur.haveyourstyle.models.dtos.CustomerDto;
 import be.technofutur.haveyourstyle.models.dtos.IndividualSellerDto;
 import be.technofutur.haveyourstyle.models.dtos.ProfessionalSellerDto;
@@ -13,5 +17,6 @@ public interface SessionService {
     public UserDto login(UserFormLogin formLogin);
     public IndividualSellerDto registerSellerind(IndividualSellerRegisterForm formRegisterInd);
     public ProfessionalSellerDto registerSellerPro(ProSellerRegisterForm formRegisterPro);
-    public CustomerDto registerCustomer(CustomerRegisterForm formRegisterCustomer);
+    public String registerCustomer(CustomerRegisterForm formRegisterCustomer,String siteURL)
+        throws UnsupportedEncodingException,MessagingException;
 }

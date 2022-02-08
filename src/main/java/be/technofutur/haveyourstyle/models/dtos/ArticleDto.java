@@ -2,7 +2,6 @@ package be.technofutur.haveyourstyle.models.dtos;
 
 import java.util.List;
 
-import be.technofutur.haveyourstyle.models.entities.Info;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,6 +13,8 @@ public class ArticleDto {
     private float price;
     private List<String> pictures;
     private BrandDto brand;
-    private Info info;
-    private boolean canModifie;
+    private String shortDesciption;
+    private String numArticle;
+    private String material;
+    private String note;
 }

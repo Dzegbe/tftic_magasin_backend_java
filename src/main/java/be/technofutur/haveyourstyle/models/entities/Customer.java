@@ -29,4 +29,5 @@ public class Customer extends User{
     private List<Article> wishList;
     @OneToOne
     private CustomerMeasurements measurement;
+    private String Verificationtoken;
 }

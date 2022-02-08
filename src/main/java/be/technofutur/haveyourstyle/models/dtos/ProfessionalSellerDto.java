@@ -16,5 +16,6 @@ public class ProfessionalSellerDto extends UserDto {
     private String TvaNumber;
     private String companyNumber;
     private String companyName;
-    private String fax;  
+    private String fax;
+    private List<String> socialNetwork;  
 }

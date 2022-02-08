@@ -16,6 +16,9 @@ public class ArticleForm {
     private float price;
     private List<String> pictures;
     private Long idBrand;
-    // private Infoform info;
+    private String shortDesciption;
+    private String numArticle;
+    private String material;
+    private String note;
     
 }

@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -37,5 +39,7 @@ public class Seller extends User {
     private String functionSeller;
     @OneToMany(cascade = CascadeType.ALL)
     private List<CategoryStyle> style;
+    @ElementCollection(targetClass = String.class)
+    private List<String> socialNetwork;
     
 }

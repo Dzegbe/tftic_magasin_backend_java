@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import be.technofutur.haveyourstyle.configs.JwtConst;
 import be.technofutur.haveyourstyle.models.entities.User;
 
 
@@ -31,7 +32,7 @@ public class JwtTokenProvider {
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtConst.EXPIRATION_TIME))
                 .withClaim("roles",user.getRoles())
-                .sign((Algorithm.HMAC512(JwtConst.JWT_KEY)));        
+                .sign(Algorithm.HMAC512(JwtConst.JWT_KEY));        
     }
     /**
      * Permet la suppression du prefixe du token pour éviter lors de la lecture une erreur

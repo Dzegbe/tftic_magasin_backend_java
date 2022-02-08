@@ -32,15 +32,14 @@ public class Article {
     private Long articleId;
     @Column(nullable = false)
     private String label;
-    @Column(nullable = false)
     private float price;
     @Lob
     @ElementCollection(targetClass = String.class)
     private List<String> pictures;
     @ManyToOne(cascade = CascadeType.ALL)
     private Brand brand;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Info info;
-    // private boolean canModifie;
-    // private int maxQuantity; 
+    private String shortDesciption;
+    private String numArticle;
+    private String material;
+    private String note;
 }

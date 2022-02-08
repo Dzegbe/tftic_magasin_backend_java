@@ -1,8 +1,14 @@
 package be.technofutur.haveyourstyle.controllers;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +22,9 @@ import be.technofutur.haveyourstyle.models.forms.userforms.IndividualSellerRegis
 import be.technofutur.haveyourstyle.models.forms.userforms.ProSellerRegisterForm;
 import be.technofutur.haveyourstyle.models.forms.userforms.UserFormLogin;
 import be.technofutur.haveyourstyle.services.serviceImpl.SessionServiceImpl;
-
+import be.technofutur.haveyourstyle.utils.ServeurRequest;
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @RestController
 public class SessionController {
 
@@ -32,8 +40,17 @@ public class SessionController {
     }
 
     @PostMapping("/registerCustomer")
-    public ResponseEntity<CustomerDto> registerCustomer(@Valid @RequestBody CustomerRegisterForm form){
-        return ResponseEntity.ok(this.sessionService.registerCustomer(form));
+    public ResponseEntity<String> registerCustomer(@Valid @RequestBody CustomerRegisterForm form, HttpServletRequest request)
+        throws UnsupportedEncodingException, MessagingException {
+        return ResponseEntity.ok(this.sessionService.registerCustomer(form,"http://localhost:8080")
+        );
+    }
+
+    @GetMapping("/verifyCustomer")
+    public ResponseEntity<CustomerDto> verifyMail(@Param ("code") String code,
+    @Param ("mail") String mail){
+        log.info(code);
+        return ResponseEntity.ok(this.sessionService.verify(code, mail));
     }
 
     @PostMapping("/registerSellerInd")

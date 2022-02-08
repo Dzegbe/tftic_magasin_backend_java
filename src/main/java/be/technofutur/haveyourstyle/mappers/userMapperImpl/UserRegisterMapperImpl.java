@@ -34,7 +34,10 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
             Adress a = new Adress();
             a = adressMapper.formToEntity(formRegister.getAdress(),a);
             a.setFunction(List.of("DOMICIL"));
-            customer.getAdress().add(a);
+            if(customer.getAdress()!= null)
+               customer.getAdress().add(a);
+            else
+                customer.setAdress(List.of(a));
             customer.setName((formRegister.getName()).toLowerCase());
             customer.setSurname(formRegister.getSurname().toLowerCase());
             customer.setPassword(formRegister.getPassword());
@@ -51,7 +54,10 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
            Adress a = new Adress();
            a = adressMapper.formToEntity(formIndividual.getAdress(),a);
            a.setFunction(List.of("DOMICIL"));
-           seller.setAdress(List.of(a));
+           if(seller.getAdress()!= null)
+            seller.getAdress().add(a);
+           else
+            seller.setAdress(List.of(a));
            seller.setGsmNumber(formIndividual.getGsmNumber());
            seller.setTelNumber(formIndividual.getTelNumber());
            seller.setEmail(formIndividual.getEmail());
@@ -62,6 +68,9 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
            seller.setFax(null);
            seller.setTvaNumber(null);
            seller.setCompanyNumber(null);
+           if(formIndividual.getSocialNetwork() != null){
+                seller.setSocialNetwork(formIndividual.getSocialNetwork());
+            }
            return seller;
        }
         return null;
@@ -73,7 +82,10 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
           Adress a = new Adress();
             a = adressMapper.formToEntity(formProfessional.getAdress(),a);
             a.setFunction(List.of("DOMICIL"));
-            seller.getAdress().add(a);
+            if(seller.getAdress()!= null)
+                seller.getAdress().add(a);
+            else
+                seller.setAdress(List.of(a));
             seller.setGsmNumber(formProfessional.getGsmNumber());
             seller.setTelNumber(formProfessional.getTelNumber());
             seller.setEmail(formProfessional.getEmail());
@@ -82,6 +94,9 @@ public class UserRegisterMapperImpl implements RegisterMapperUsers {
             seller.setCompanyNumber(formProfessional.getCompanyNumber());
             seller.setCompanyName(formProfessional.getCompanyName().toLowerCase());
             seller.setFax((formProfessional.getFax()));
+            if(formProfessional.getSocialNetwork() != null){
+                seller.setSocialNetwork(formProfessional.getSocialNetwork());
+            }
             return seller;
         }
         return null;

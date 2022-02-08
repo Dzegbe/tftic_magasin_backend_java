@@ -14,4 +14,5 @@ public class IndividualSellerDto extends UserDto{
     private String email;
     private String name;
     private String surname;
+    private List<String> socialNetwork; 
 }
