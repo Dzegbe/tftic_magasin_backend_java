@@ -12,4 +12,15 @@ spring:
     mvc:
         throw-exception-if-no-handler-found: true
         static-path-pattern: /static
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: haveuniquestyle@gmail.com
+        password: Magasin075
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
 
